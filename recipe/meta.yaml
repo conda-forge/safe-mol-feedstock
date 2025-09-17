@@ -1,13 +1,13 @@
 {% set name = "safe-mol" %}
-{% set version = "0.1.12" %}
+{% set version = "0.1.14" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 5dd16bbb413389116036d207aace284c1113d9b7017a822119705dbccef2f205
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: 235b7c84bcfe8e80c602387bade3a0d9183d0b0a1b73e07234d8ee83f7b1d019
 
 build:
   entry_points:
