@@ -1,5 +1,5 @@
 {% set name = "safe-mol" %}
-{% set version = "0.1.14" %}
+{% set version = "0.2.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 235b7c84bcfe8e80c602387bade3a0d9183d0b0a1b73e07234d8ee83f7b1d019
+  sha256: 38d5c9e3916df2df83d27858309eeb3fca4780665f9d7e04621fef8c72ef2bdc
 
 build:
   entry_points:
     - safe-train = safe.trainer.cli:main
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 2
+  number: 0
 
 requirements:
   host:
@@ -24,21 +24,26 @@ requirements:
     - pip
   run:
     - python >={{ python_min }}
-    - tqdm
-    - loguru
-    - typer
-    - universal_pathlib
+    # notation core + visualization (the base install)
     - datamol
-    - rdkit
-    - numpy
-    - pytorch >=2.0
-    - transformers >=4.30,<5
-    - datasets
-    - tokenizers
-    - accelerate
-    - evaluate
-    - wandb
-    - huggingface_hub <1
+    - loguru
+    - matplotlib-base >=3.8
+    - networkx >=3.2
+    - numpy >=1.26
+    - pillow >=10
+    - rdkit >=2024.09.1
+    # model stack (SAFE-GPT inference, the safe-train CLI, W&B) — bundled for conda
+    - pytorch >=2.5
+    - transformers >=5,<6
+    - tokenizers >=0.23.1,<0.24
+    - huggingface_hub >=1.5,<2
+    - tqdm >=4.66
+    - fsspec >=2023.9.2
+    - accelerate >=1.1
+    - datasets >=4
+    - evaluate >=0.4.3
+    - universal_pathlib >=0.2
+    - wandb >=0.18
 
 test:
   requires:
