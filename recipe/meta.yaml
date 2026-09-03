@@ -1,20 +1,20 @@
 {% set name = "safe-mol" %}
-{% set version = "0.1.14" %}
+{% set version = "0.2.1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 235b7c84bcfe8e80c602387bade3a0d9183d0b0a1b73e07234d8ee83f7b1d019
+  url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: 38d5c9e3916df2df83d27858309eeb3fca4780665f9d7e04621fef8c72ef2bdc
 
 build:
   entry_points:
     - safe-train = safe.trainer.cli:main
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
