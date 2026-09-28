@@ -14,7 +14,7 @@ build:
     - safe-train = safe.trainer.cli:main
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
@@ -25,13 +25,13 @@ requirements:
   run:
     - python >={{ python_min }}
     # notation core + visualization (the base install)
-    - datamol
+    - datamol >=0.12.5
     - loguru
     - matplotlib-base >=3.8
     - networkx >=3.2
     - numpy >=1.26
     - pillow >=10
-    - rdkit >=2024.09.1
+    - rdkit >=2024.09.1,!=2026.3.*
     # model stack (SAFE-GPT inference, the safe-train CLI, W&B) — bundled for conda
     - pytorch >=2.5
     - transformers >=5,<6
